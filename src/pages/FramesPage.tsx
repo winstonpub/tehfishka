@@ -9,6 +9,8 @@ import { parseCsv, parseMatrix, type Matrix } from "../lib/sheet";
 import { useSets } from "../lib/useSets";
 import { SETS_SNAPSHOT_DATE } from "../data/setsSnapshot";
 
+
+
 type DataState = {
   matrix: Matrix;
   source: "live" | "snapshot";
@@ -311,7 +313,7 @@ export default function FramesPage() {
                 ))}
               {setsState.sets.length === 0 && (
                 <tr>
-                  <td colSpan={2} className="px-4 py-8 text-center text-sm text-[#7b7c73]">
+                  <td colSpan={3} className="px-4 py-8 text-center text-sm text-[#7b7c73]">
                     Лист «Каминокомплект» пуст.
                   </td>
                 </tr>

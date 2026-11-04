@@ -133,8 +133,8 @@ export default function ProductSheetView({
               emptyText={listLoading ? "Загружаем список…" : "Товары не найдены"}
               onSelect={setProductKey}
             />
-            {hasContent && (
-              <div className="mt-2 flex flex-wrap gap-2">
+            <div className="mt-2 flex flex-wrap gap-2">
+              {hasContent && (
                 <button
                   type="button"
                   onClick={reset}
@@ -142,8 +142,8 @@ export default function ProductSheetView({
                 >
                   Сбросить
                 </button>
-              </div>
-            )}
+              )}
+            </div>
             {customPhoto && <div className="mt-2 text-[11px] leading-snug text-[#9a9a90]">Загружено своё изображение — оно заменяет фото по артикулу.</div>}
             {selected?.article && !customPhoto && (
               <div className="mt-2 truncate text-[11px] tabular-nums text-[#9a9a90]">Файл: {getProductImageFilename(selected.article)}</div>
