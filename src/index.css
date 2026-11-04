@@ -1,0 +1,382 @@
+@import "tailwindcss";
+
+:root {
+  --accent: #f5c400;
+  --accent-soft: #fff8d6;
+  --accent-tint: #fff3b8;
+  --accent-text: #8a6d00;
+  --ink: #1d1f1b;
+}
+
+/* ---------- Логотип / выпадающий список ---------- */
+.brand-mark {
+  position: relative;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--ink);
+  box-shadow: 0 3px 7px rgb(29 31 27 / 14%);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brand-mark:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgb(29 31 27 / 22%);
+}
+
+.brand-mark:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent);
+}
+
+.brand-mark-open {
+  box-shadow: 0 0 0 3px var(--accent);
+}
+
+.brand-mark-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 7px);
+  gap: 3px;
+}
+
+.brand-mark-grid span {
+  width: 7px;
+  height: 7px;
+  border-radius: 1.5px;
+  background: #f1f1ec;
+}
+
+.brand-mark-grid span:nth-child(2) {
+  background: var(--accent);
+}
+
+.brand-mark-grid span:nth-child(3) {
+  background: #72746c;
+}
+
+.brand-mark-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #f1efe9;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.brand-mark-chevron {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  display: grid;
+  width: 14px;
+  height: 14px;
+  place-items: center;
+  border: 1.5px solid #f1efe9;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ink);
+  transition: transform 0.2s ease;
+}
+
+.brand-wordmark {
+  color: var(--ink);
+  font-family: "Unbounded Variable", sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.brand-wordmark-accent {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.brand-wordmark-accent::after {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  height: 4px;
+  background: var(--accent);
+  content: "";
+}
+
+@media screen and (max-width: 310px) {
+  .brand-wordmark {
+    font-size: clamp(16px, 6.5vw, 21px);
+  }
+}
+
+/* ---------- Лист A4 ---------- */
+.sheet {
+  width: min(297mm, 100%);
+  aspect-ratio: 297 / 210;
+}
+
+/* Вертикальный лист A5: фото сверху, место для ценника снизу */
+.sheet--a5 {
+  width: min(148mm, 100%);
+  aspect-ratio: 148 / 210;
+  grid-template-rows: 1fr 1fr;
+}
+
+.sheet > div {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Зона загрузки фото */
+.upload-zone {
+  border-color: #cbd5e1;
+  color: #64748b;
+}
+
+.upload-zone .upload-zone-hint {
+  color: #94a3b8;
+}
+
+.upload-zone:hover,
+.upload-zone:focus-visible,
+.upload-zone-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  outline: none;
+}
+
+.upload-zone:hover .upload-zone-hint,
+.upload-zone:focus-visible .upload-zone-hint,
+.upload-zone-active .upload-zone-hint {
+  color: var(--accent-text);
+}
+
+@media (hover: hover) {
+  .photo-actions {
+    opacity: 0;
+  }
+
+  .group:hover .photo-actions,
+  .group:focus-within .photo-actions {
+    opacity: 1;
+  }
+}
+
+/* ---------- Таблица совместимости ---------- */
+.matrix-wrap {
+  max-height: calc(100vh - 150px);
+  min-height: 240px;
+}
+
+.matrix th,
+.matrix td {
+  border-bottom: 1px solid #ecebe5;
+  border-right: 1px solid #f1f0ea;
+}
+
+.matrix thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f9f8f4;
+  border-bottom: 2px solid #e4e2da;
+  vertical-align: bottom;
+}
+
+.matrix th.corner {
+  left: 0;
+  z-index: 3;
+  width: 240px;
+  min-width: 240px;
+  padding: 12px 14px;
+  text-align: left;
+  box-shadow: 4px 0 8px -6px rgb(29 31 27 / 20%);
+}
+
+.matrix th.hearth {
+  width: 56px;
+  min-width: 56px;
+  height: 170px;
+  padding: 0;
+}
+
+.matrix th.hearth.is-selected,
+.matrix td.cell.is-selected {
+  background: var(--accent-tint);
+}
+
+.hearth-btn {
+  display: flex;
+  width: 100%;
+  height: 170px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px 4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.hearth-btn:hover {
+  background: var(--accent-soft);
+}
+
+.hearth-btn:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.hearth-label {
+  display: block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.hearth-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hearth-article {
+  display: block;
+  font-size: 11px;
+  color: #7b7c73;
+  font-variant-numeric: tabular-nums;
+}
+
+.matrix tbody th.frame {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  max-width: 240px;
+  padding: 8px 14px;
+  text-align: left;
+  font-weight: 500;
+  background: #fff;
+  box-shadow: 4px 0 8px -6px rgb(29 31 27 / 20%);
+}
+
+.matrix tbody tr:nth-child(even) th.frame,
+.matrix tbody tr:nth-child(even) td.cell {
+  background-color: #fcfbf8;
+}
+
+.matrix tbody tr:nth-child(even) td.cell.is-selected {
+  background-color: var(--accent-tint);
+}
+
+.matrix tbody tr:hover th.frame,
+.matrix tbody tr:hover td.cell {
+  background-color: var(--accent-soft);
+}
+
+.matrix td.cell {
+  padding: 6px 4px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.chip-yes {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.chip-no {
+  display: inline-block;
+  color: #d4d3cb;
+  font-size: 16px;
+  line-height: 1;
+}
+
+@media screen and (max-width: 639px) {
+  .matrix th.corner {
+    width: 160px;
+    min-width: 160px;
+    padding: 10px;
+  }
+
+  .matrix tbody th.frame {
+    max-width: 160px;
+    padding: 8px 10px;
+  }
+
+  .matrix-wrap {
+    max-height: calc(100vh - 120px);
+  }
+}
+
+/* ---------- Печать ---------- */
+@media print {
+  html, body, #root {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+  .no-print { display: none !important; }
+  .print-wrap,
+  .sheet-stage {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+    overflow: visible !important;
+    display: block !important;
+    max-width: none !important;
+  }
+  .sheet {
+    box-shadow: none !important;
+    margin: 0 !important;
+    overflow: hidden;
+    page-break-after: avoid;
+    break-after: avoid;
+    aspect-ratio: auto;
+  }
+  .sheet:not(.sheet--a5) {
+    width: 297mm;
+    height: 209.5mm;
+  }
+  .sheet--a5 {
+    width: 148mm;
+    height: 209.5mm;
+  }
+  .frames-page {
+    max-width: none !important;
+    padding: 10mm !important;
+  }
+  .matrix-wrap {
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+  .matrix thead th,
+  .matrix tbody th.frame {
+    position: static;
+    box-shadow: none;
+  }
+  .matrix tbody tr {
+    break-inside: avoid;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
