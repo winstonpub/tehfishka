@@ -9,6 +9,43 @@
 }
 
 /* ---------- Логотип / выпадающий список ---------- */
+.brand-logo-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  border-radius: 10px;
+  padding: 2px 4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brand-logo-btn:hover {
+  background: rgb(255 255 255 / 8%);
+}
+
+.brand-logo-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent);
+}
+
+.brand-logo-open {
+  background: rgb(255 255 255 / 8%);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.brand-logo-chevron {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #20282b;
+  transition: transform 0.2s ease;
+}
+
 .brand-mark {
   position: relative;
   display: grid;

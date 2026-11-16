@@ -57,16 +57,14 @@ export default function App() {
   }, [page]);
 
   return (
-    <div className="min-h-screen bg-slate-100">
-      <header className="no-print sticky top-0 z-30 border-b border-[#e4e2da] bg-[#f1efe9]">
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-2 py-2.5 sm:px-6">
-          <div className="flex shrink-0 items-center gap-3">
+    <div className="min-h-screen bg-[#FFFFFF]">
+      <header className="no-print sticky top-0 z-30 border-b border-[#20282B] bg-[#20282B]">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-2 py-2 sm:px-6">
+          <div className="flex min-w-0 shrink-0 items-center gap-3">
             <BrandMenu pages={PAGES} currentId={page.id} />
-            <h1 className="brand-wordmark">
-              Техфишка <span className="brand-wordmark-accent">Камины</span>
-            </h1>
+            <h1 className="sr-only">Техфишка Камины</h1>
           </div>
-          <div className="hidden items-center gap-2 rounded-full border border-[#e4e2da] bg-white/70 py-1 pl-2 pr-3 text-xs text-[#56574f] sm:flex">
+          <div className="hidden items-center gap-2 rounded-full border border-white/15 bg-white/10 py-1 pl-2 pr-3 text-xs text-white/90 sm:flex">
             <span className="h-2 w-2 rounded-full bg-[#F5C400]" aria-hidden="true" />
             {page.title}
           </div>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import SiteLogo from "./SiteLogo";
 
 export type PageLink = {
   id: string;
@@ -72,17 +73,11 @@ export function BrandMenu({
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className={`brand-mark ${open ? "brand-mark-open" : ""}`}
+        className={`brand-logo-btn ${open ? "brand-logo-open" : ""}`}
       >
-        <span className="brand-mark-grid" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <span />
-        </span>
-        <span className="brand-mark-dot" aria-hidden="true" />
-        <span className={`brand-mark-chevron ${open ? "rotate-180" : ""}`} aria-hidden="true">
-          <svg viewBox="0 0 10 6" width="8" height="5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+        <SiteLogo className="h-10 w-auto sm:h-11" />
+        <span className={`brand-logo-chevron ${open ? "rotate-180" : ""}`} aria-hidden="true">
+          <svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
             <path d="M1 1l4 4 4-4" />
           </svg>
         </span>

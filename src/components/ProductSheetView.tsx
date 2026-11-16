@@ -44,7 +44,7 @@ export default function ProductSheetView({
   const photoKey = catalog === "sets" ? "tf_set_photo" : "tf_single_photo";
   const [productKey, setProductKey] = useState<string | null>(() => load(storageKey));
   const [customPhoto, setCustomPhoto] = useState<string | null>(() => load(photoKey));
-  const [fit, setFit] = useState<Fit>("contain");
+  const [fit] = useState<Fit>("contain");
   const [lines, setLines] = useState(false);
   const listLoading = catalog === "sets" ? setsLoading : matrixLoading;
 
@@ -123,7 +123,7 @@ export default function ProductSheetView({
           <p className="mt-1 text-xs text-[#7b7c73]">A5 · книжная · 2 части</p>
 
           <div className="mt-4">
-            <div className="mb-1.5 text-xs font-medium text-[#56574f]">Выбрать фото</div>
+            <div className="mb-1.5 text-xs font-medium text-[#56574f]">{catalog === "sets" ? "Каминокомплект" : "Товар"}</div>
             <SelectDrop
               value={productKey}
               displayValue={selected?.name ?? null}
@@ -148,30 +148,6 @@ export default function ProductSheetView({
             {selected?.article && !customPhoto && (
               <div className="mt-2 truncate text-[11px] tabular-nums text-[#9a9a90]">Файл: {getProductImageFilename(selected.article)}</div>
             )}
-          </div>
-
-          <div className="mt-4">
-            <div className="mb-1.5 text-xs font-medium text-[#56574f]">Размещение фото</div>
-            <div className="grid grid-cols-2 overflow-hidden rounded-lg border border-[#d8d8cf] text-sm" role="group" aria-label="Размещение фото">
-              <button
-                onClick={() => setFit("contain")}
-                aria-pressed={fit === "contain"}
-                className={`whitespace-nowrap px-2 py-2 transition-colors ${
-                  fit === "contain" ? "bg-[#24251f] text-white" : "bg-white text-[#56574f] hover:bg-[#FFF8D6]"
-                }`}
-              >
-                Вписать фото
-              </button>
-              <button
-                onClick={() => setFit("cover")}
-                aria-pressed={fit === "cover"}
-                className={`whitespace-nowrap border-l border-[#d8d8cf] px-2 py-2 transition-colors ${
-                  fit === "cover" ? "bg-[#24251f] text-white" : "bg-white text-[#56574f] hover:bg-[#FFF8D6]"
-                }`}
-              >
-                Заполнить
-              </button>
-            </div>
           </div>
 
           <label className="mt-4 flex cursor-pointer items-center justify-between gap-3 rounded-lg border border-[#d8d8cf] bg-white px-3 py-2.5 text-sm text-[#1d1f1b] transition-colors hover:bg-[#FFF8D6]">

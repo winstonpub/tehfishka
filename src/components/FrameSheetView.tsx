@@ -32,7 +32,7 @@ export default function FrameSheetView({ switcher }: { switcher: ReactNode }) {
   const [photo2, setPhoto2] = useState<string | null>(() => load("tf_photo2"));
   const [photo1OverrideArticle, setPhoto1OverrideArticle] = useState<string | null>(() => load("tf_photo1_override_article"));
   const [photo2OverrideArticle, setPhoto2OverrideArticle] = useState<string | null>(() => load("tf_photo2_override_article"));
-  const [fit, setFit] = useState<Fit>("contain");
+  const [fit] = useState<Fit>("contain");
   const [lines, setLines] = useState(false);
   const [frameName, setFrameName] = useState<string | null>(() => load("tf_frame"));
   const [hearthName, setHearthName] = useState<string | null>(() => load("tf_hearth"));
@@ -184,7 +184,7 @@ export default function FrameSheetView({ switcher }: { switcher: ReactNode }) {
 
           <div className="mt-4 space-y-4">
             <div>
-              <div className="mb-1.5 text-xs font-medium text-[#56574f]">Верхнее фото</div>
+              <div className="mb-1.5 text-xs font-medium text-[#56574f]">Обрамление</div>
               <SelectDrop
                 value={frameName}
                 options={frameOptions}
@@ -201,7 +201,7 @@ export default function FrameSheetView({ switcher }: { switcher: ReactNode }) {
             </div>
 
             <div>
-              <div className="mb-1.5 text-xs font-medium text-[#56574f]">Нижнее фото</div>
+              <div className="mb-1.5 text-xs font-medium text-[#56574f]">Очаг</div>
               <SelectDrop
                 value={hearthName}
                 options={hearthOptions}
@@ -213,7 +213,7 @@ export default function FrameSheetView({ switcher }: { switcher: ReactNode }) {
               />
               {!selectedFrame ? (
                 <div className="mt-1 text-[11px] leading-snug text-[#9a9a90]">
-                  Сначала выберите верхнее фото — покажем подходящие очаги.
+                  Сначала выберите обрамление — покажем подходящие очаги.
                 </div>
               ) : (
                 hearthName &&
@@ -242,34 +242,6 @@ export default function FrameSheetView({ switcher }: { switcher: ReactNode }) {
                 Сбросить выбор
               </button>
             )}
-          </div>
-
-          <div className="mt-4">
-            <div className="mb-1.5 text-xs font-medium text-[#56574f]">Размещение фото</div>
-            <div
-              className="grid grid-cols-2 overflow-hidden rounded-lg border border-[#d8d8cf] text-sm"
-              role="group"
-              aria-label="Размещение фото"
-            >
-              <button
-                onClick={() => setFit("contain")}
-                aria-pressed={fit === "contain"}
-                className={`whitespace-nowrap px-2 py-2 transition-colors ${
-                  fit === "contain" ? "bg-[#24251f] text-white" : "bg-white text-[#56574f] hover:bg-[#FFF8D6]"
-                }`}
-              >
-                Вписать фото
-              </button>
-              <button
-                onClick={() => setFit("cover")}
-                aria-pressed={fit === "cover"}
-                className={`whitespace-nowrap border-l border-[#d8d8cf] px-2 py-2 transition-colors ${
-                  fit === "cover" ? "bg-[#24251f] text-white" : "bg-white text-[#56574f] hover:bg-[#FFF8D6]"
-                }`}
-              >
-                Заполнить
-              </button>
-            </div>
           </div>
 
           <label className="mt-4 flex cursor-pointer items-center justify-between gap-3 rounded-lg border border-[#d8d8cf] bg-white px-3 py-2.5 text-sm text-[#1d1f1b] transition-colors hover:bg-[#FFF8D6]">
@@ -305,7 +277,7 @@ export default function FrameSheetView({ switcher }: { switcher: ReactNode }) {
             disabled={!hasPhotos}
             className="mt-2 w-full rounded-lg border border-[#d8d8cf] bg-white px-4 py-2 text-sm text-[#56574f] transition-colors hover:bg-[#FFF8D6] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white"
           >
-            Очистить фото
+            Очистить
           </button>
 
           <p className="mt-3 text-[11px] leading-snug text-[#9a9a90]">
